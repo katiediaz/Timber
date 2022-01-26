@@ -1,0 +1,8 @@
+.hikeDisplay {
+    display: flex;
+    flex-direction: row;
+}
+
+.hikes {
+    width: 60%;
+}
