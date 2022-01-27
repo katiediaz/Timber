@@ -1,16 +1,25 @@
 import React from "react";
-import './Hike.css'
+import "./Hike.css";
 
 const Hike = (props) => {
-  const onBoardIsSelected = (e) => {
-    props.readSelectedBoard(e.target.value, props.title)
-  }
- 
+
   return (
-    <option value={props.id} onClick={onBoardIsSelected}>
-      {props.id}. {props.title}
-    </option>
-  )
-}
+    <div className="image">
+      <p>
+      <h2>{props.name}</h2>
+        <img
+          src={props.imageurl}
+          alt={props.name}
+        ></img>
+        <div className="reactions">
+          <button>Nope</button>
+          <button>Get Hiking</button>
+        </div>
+      </p>
+    </div>
+  );
+};
+
+
 
 export default Hike;
