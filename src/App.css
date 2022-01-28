@@ -9,16 +9,4 @@ h2 {
   padding: 10px;
 }
 
-.main {
-  display: flex;
-  flex-direction: row;
-}
 
-.main > * {
-  width: 30%;
-}
-
-select {
-  display: block;
-  width: 90%;
-}

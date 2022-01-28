@@ -6,8 +6,8 @@ const Hike = (props) => {
   return (
     <div className="image">
       <p>
-      <h2>{props.name}</h2>
-        <img
+      <h2 id="name">{props.name}</h2>
+        <img id="photo"
           src={props.imageurl}
           alt={props.name}
         ></img>

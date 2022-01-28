@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./App.css";
 import Hike from "./components/Hike";
 import Header from "./components/Header";
+import { BrowserRouter as Router, Switch, Rout } from "react-router-dom";
 
 function App() {
   const [hikeList, updatedHikeList] = useState([
@@ -32,12 +33,14 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
-      <Hike
-        chooseHikeNumber={chooseHikeNumber}
-        name={hikeList[myRandomHikeNumber].name}
-        imageurl={hikeList[myRandomHikeNumber].url}
-      />
+      <Router>
+        <Header />
+        <Hike
+          chooseHikeNumber={chooseHikeNumber}
+          name={hikeList[myRandomHikeNumber].name}
+          imageurl={hikeList[myRandomHikeNumber].url}
+        />
+      </Router>
     </div>
   );
 }

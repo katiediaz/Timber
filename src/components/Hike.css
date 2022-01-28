@@ -1,18 +1,22 @@
-.hikeDisplay {
-    display: flex;
-    flex-direction: row;
-}
-
 .hikes {
+    display: flex;
     width: 60%;
 }
 
 .image {
+    display: flex;
+    padding: 20px;
 
-    height: 500;
-    width: 500;
 }
-
+#name{
+    padding-bottom: 20;
+    align-self: top;
+}
+#photo{
+    padding: 50px;
+    /* height: 500px; */
+    object-fit: contain;
+}
 .reactions {
     justify-self: center;
     margin-top: 65px;

@@ -1,0 +1,16 @@
+.header{
+    display: flex;
+    justify-content: left;
+    border-bottom: 1px solid rgb(11, 23, 11);
+    background-color: gray;
+    align-items: center;
+}
+
+.header__icon{
+    padding: 20px;
+
+}
+
+.about{
+    padding-left: 1100px;
+}
