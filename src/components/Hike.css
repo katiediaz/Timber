@@ -4,8 +4,14 @@
 }
 
 .image {
-    display: flex;
+    position: relative;
+    width: 600px;
     padding: 20px;
+    max-width: 85vh;
+    height: 50vh;
+    border-radius: 20px;
+    background-size: cover;
+    background-position: center
 
 }
 #name{
@@ -13,9 +19,14 @@
     align-self: top;
 }
 #photo{
-    padding: 50px;
-    /* height: 500px; */
-    object-fit: contain;
+    position: relative;
+    width: 600px;
+    padding: 20px;
+    max-width: 85vh;
+    height: 50vh;
+    border-radius: 20px;
+    background-size: cover;
+    background-position: center;
 }
 .reactions {
     justify-self: center;
