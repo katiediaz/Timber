@@ -12,8 +12,7 @@ const Hike = (props) => {
           alt={props.name}
         ></img>
         <div className="reactions">
-          <button>Nope</button>
-          <button>Get Hiking</button>
+          <button onClick={() => props.chooseHikeNumber()}>Nope</button> 
         </div>
       </p>
     </div>

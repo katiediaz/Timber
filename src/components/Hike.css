@@ -9,10 +9,8 @@
 
 .image {
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    height: 500;
+    width: 500;
 }
 
 .reactions {
