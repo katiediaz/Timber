@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Hike.css";
 import TinderCard from "react-tinder-card";
 
-const Hike = (props) => {
+
+function Hike (props) {
   return (
     <div className="image">
       <TinderCard className="swipe" preventSwipe={["up", "down"]}>
