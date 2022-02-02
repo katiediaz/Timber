@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./Hike.css";
 import TinderCard from "react-tinder-card";
 
@@ -9,10 +9,11 @@ function Hike (props) {
       <TinderCard className="swipe" preventSwipe={["up", "down"]}>
         <h2 id="name">{props.name}</h2>
         <img id="photo" src={props.imageurl} alt={props.name}></img>
+        
       </TinderCard>
 
       <div className="reactions">
-        <button onClick={() => props.chooseHikeNumber()}>Nope</button>
+        <button onClick={() => props.chooseHikeNumber()}>Swipe-Left</button>
       </div>
     </div>
   );

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import TinderCard from "react-tinder-card";
 import { Swipe } from "@mui/icons-material";
 import Hike from "./Hike";
+import "./HikeViewer.css";
 import SwipeButtons from "./SwipeButtons";
 
 function HikeViewer(props) {
@@ -22,24 +23,50 @@ function HikeViewer(props) {
     },
   ]);
 
-  function getRandomInt(max) {
-    return Math.floor(Math.random() * max);
-  }
-  const [myRandomHikeNumber, updateRandomHikeNumber] = useState(0);
-  function chooseHikeNumber() {
-    const newNumber = getRandomInt(hikeList.length);
-    updateRandomHikeNumber(newNumber);
-  }
-  console.log(myRandomHikeNumber);
-  console.log(hikeList[myRandomHikeNumber].name);
+  // function getRandomInt(max) {
+  //   return Math.floor(Math.random() * max);
+  // }
+  // const [myRandomHikeNumber, updateRandomHikeNumber] = useState(0);
+  // function chooseHikeNumber() {
+  //   const newNumber = getRandomInt(hikeList.length);
+  //   updateRandomHikeNumber(newNumber);
+  // }
+  // console.log(myRandomHikeNumber);
+  // console.log(hikeList[myRandomHikeNumber].name);
+  const swiped = (direction, nameToDelete) => {
+    console.log("removing: " + nameToDelete);
+    // setLastDirection(direction)
+  };
+
+  const outOfFrame = (name) => {
+    console.log(name + " left the screen!");
+  };
 
   return (
-    <div>
-      <Hike
-        chooseHikeNumber={chooseHikeNumber}
-        name={hikeList[myRandomHikeNumber].name}
-        imageurl={hikeList[myRandomHikeNumber].url}
+    <div className="cardContainer">
+      {hikeList.map((hikeList) => (
+        <TinderCard
+          className="swipe"
+          key={hikeList.name}
+          onSwipe={(dir) => swiped(dir, hikeList.name)}
+          onCardLeftScreen={() => outOfFrame(hikeList.name)}
+        >
+          <div
+            style={{ backgroundImage: "url(" + hikeList.url + ")" }}
+            className="card"
+          >
+            <h3>{hikeList.name}</h3>
+          </div>
+        </TinderCard>
+      ))}
+
+      {/* <Hike 
+      
+        // chooseHikeNumber={chooseHikeNumber}
+        // name={hikeList[myRandomHikeNumber].name}
+        // imageurl={hikeList[myRandomHikeNumber].url}
       />
+      */}
       <SwipeButtons />
     </div>
   );

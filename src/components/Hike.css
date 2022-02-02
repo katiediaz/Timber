@@ -14,7 +14,7 @@
     padding-bottom: 20;
     align-self: top;
 }
-#photo{
+/* #photo{
     position: relative;
     width: 600px;
     padding: 20px;
@@ -24,7 +24,7 @@
     background-size: cover;
     background-position: center;
     box-shadow: 0px 18px 53px rgba(0, 0, 0, 0.3)
-}
+} */
 .reactions {
     justify-self: bottom;
     margin-top: 65px;
