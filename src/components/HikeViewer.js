@@ -7,21 +7,7 @@ import SwipeButtons from "./SwipeButtons";
 import database from "./Firestore";
 
 function HikeViewer(props) {
-  // const hikeList = []
-  //updateHikeList([hikeList ... "oyster dome, ...])
   const [Hikes, setHikes] = useState([]);
-  //   {
-  //     name: "Oyster Dome",
-  //     url: "https://www.wta.org/site_images/hikes/dscn9597.jpg-1/@@images/777894df-956f-4e76-8302-875cba4ffaa7.jpeg",
-  //   },
-  //   {
-  //     name: "Camp Muir",
-  //     url: "https://www.wta.org/site_images/hikes/camp-muir-main.jpg/@@images/9e10e2c6-b5e2-4db8-ba3e-0b4ccd497a25.jpeg",
-  //   },
-  //   {
-  //     name: "Panther Creek Falls",
-  //     url: "https://www.wta.org/site_images/hikes/panther-creek-falls_austineats.jpeg/@@images/2d895071-bae3-46ed-ad6f-76bca0de5055.jpeg",
-  //   },
 
   useEffect(() => {
     // code runs here
@@ -32,13 +18,13 @@ function HikeViewer(props) {
       );
     // blank  brackets will only run once
   }, []);
-  const swiped = (direction, nameToDelete) => {
-    console.log("removing: " + nameToDelete);
-    // setLastDirection(direction)
-  };
 
-  const outOfFrame = (name) => {
-    console.log(name + " left the screen!");
+  const outOfFrame = (name, dir) => {
+    if (dir === "right")
+    console.log("accepted")
+    if (dir === "left")
+    console.log("declined")
+    console.log(name + " left the screen in direction.." + dir);
   };
 
   return (
@@ -47,8 +33,9 @@ function HikeViewer(props) {
         <TinderCard
           className="swipe"
           key={Hikes.name}
-          onSwipe={(dir) => swiped(dir, Hikes.name)}
-          onCardLeftScreen={() => outOfFrame(Hikes.name)}
+          // onSwipe={(dir) => swiped(dir, Hikes.name)}
+          preventSwipe={["up", "down"]}
+          onCardLeftScreen={(dir) => outOfFrame(Hikes.name, dir)}
         >
           <div
             style={{ backgroundImage: "url(" + Hikes.url + ")" }}
@@ -58,14 +45,6 @@ function HikeViewer(props) {
           </div>
         </TinderCard>
       ))}
-
-      {/* <Hike 
-      
-        // chooseHikeNumber={chooseHikeNumber}
-        // name={hikeList[myRandomHikeNumber].name}
-        // imageurl={hikeList[myRandomHikeNumber].url}
-      />
-      */}
       <SwipeButtons />
     </div>
   );
