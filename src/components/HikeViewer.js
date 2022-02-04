@@ -12,18 +12,16 @@ function HikeViewer(props) {
   useEffect(() => {
     // code runs here
     database
-      .collection('Hikes')
-      .onSnapshot(snapshot =>
+      .collection("Hikes")
+      .onSnapshot((snapshot) =>
         setHikes(snapshot.docs.map((doc) => doc.data()))
       );
     // blank  brackets will only run once
   }, []);
 
   const outOfFrame = (name, dir) => {
-    if (dir === "right")
-    console.log("accepted")
-    if (dir === "left")
-    console.log("declined")
+    if (dir === "right") console.log("accepted");
+    if (dir === "left") console.log("declined");
     console.log(name + " left the screen in direction.." + dir);
   };
 
