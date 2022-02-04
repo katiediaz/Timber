@@ -1,22 +1,18 @@
 import React from "react";
 import "./Hike.css";
-import TinderCard from "react-tinder-card";
+import Liked from "./Liked"
 
 
-function Hike (props) {
+function Hike() {
   return (
-    <div className="image">
-      <TinderCard className="swipe" preventSwipe={["up", "down"]}>
-        <h2 id="name">{props.name}</h2>
-        <img id="photo" src={props.imageurl} alt={props.name}></img>
-        
-      </TinderCard>
-
-      <div className="reactions">
-        <button onClick={() => props.chooseHikeNumber()}>Swipe-Left</button>
-      </div>
+    <div className="savedhike">
+      <Liked
+        name="Oyster Dome"
+        location="map"
+        url="https://www.wta.org/site_images/hikes/dscn9597.jpg-1/@@images/777894df-956f-4e76-8302-875cba4ffaa7.jpeg"
+      ></Liked>
     </div>
   );
-};
+}
 
 export default Hike;
