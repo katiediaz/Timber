@@ -4,8 +4,10 @@ import "./SwipeButtons.css";
 import CloseIcon from "@mui/icons-material/Close";
 import ReplayIcon from "@mui/icons-material/Replay";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import { IconButton } from "@mui/material";
 import {Link} from "react-router-dom";
+
 function SwipeButtons(props) {
   return (
     <div className="swipeButtons">
@@ -16,10 +18,13 @@ function SwipeButtons(props) {
         <ReplayIcon fontSize="large" />
       </IconButton>
      <Link to="liked" >
-      <IconButton className="swipeButtons_right">
+      <IconButton className="swipeButtons_saved">
         <FavoriteIcon fontsize="large" />
       </IconButton>
       </Link>
+      <IconButton className="swipeButtons_right">
+        <ThumbUpIcon fontsize="large" />
+      </IconButton>
       <div className="reactions">
       </div>
     </div>

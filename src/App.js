@@ -13,7 +13,7 @@ function App() {
       <Router>
         <Header />
         <Routes>
-          <Route path="/liked" element={<Liked/>}></Route>
+          <Route path="/liked" element={<Hike/>}></Route>
           <Route path="/about" element={<h1>AboutPage</h1>}></Route>
           <Route path="/" element={<HikeViewer />}></Route>
         </Routes>
