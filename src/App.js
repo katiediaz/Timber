@@ -5,6 +5,7 @@ import Hike from "./components/Hike";
 import HikeViewer from "./components/HikeViewer";
 import SwipeButtons from "./components/SwipeButtons";
 import Liked from "./components/Liked";
+import About from "./components/About";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -14,7 +15,7 @@ function App() {
         <Header />
         <Routes>
           <Route path="/liked" element={<Hike/>}></Route>
-          <Route path="/about" element={<h1>AboutPage</h1>}></Route>
+          <Route path="/about" element={<About/>}></Route>
           <Route path="/" element={<HikeViewer />}></Route>
         </Routes>
       </Router>

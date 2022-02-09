@@ -28,8 +28,10 @@ function HikeViewer(props) {
       .collection("Hikes")
       .onSnapshot((snapshot) =>
         setHikes(snapshot.docs.map((doc) => doc.data()))
+        // (doc) => { doc.collection(“Favorites”).onSnapshot(….) ...}
       );
-    // blank  brackets will only run oncex
+      console.log()
+    // blank  brackets will only run once
   }, []);
 
   const swiped = (direction, nameToDelete, index) => {
@@ -67,6 +69,7 @@ function HikeViewer(props) {
         <button onClick={() => goBack()}>Undo swipe!</button>
         <button onClick={() => swipe('right')}>Swipe right!</button>
       </div> */}
+      
       <SwipeButtons />
      </div>
   );
