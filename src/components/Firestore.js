@@ -1,5 +1,7 @@
 import firebase from 'firebase/compat/app';
+// import { initializeApp } from 'firebase/app';
 import 'firebase/compat/firestore';
+// import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
 
 
 const firebaseConfig = {
@@ -11,6 +13,9 @@ const firebaseConfig = {
   appId: "1:584613503050:web:f03439d849f6b7fa2906b3",
   measurementId: "G-VT76EMHN3C"
 };
+
+// const app = initializeApp(firebaseConfig);
+// const database = getFirestore(app);
 
 const firebaseApp = firebase.initializeApp(firebaseConfig);
 

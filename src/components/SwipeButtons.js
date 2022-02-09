@@ -19,11 +19,11 @@ function SwipeButtons(props) {
       </IconButton>
      <Link to="liked" >
       <IconButton className="swipeButtons_saved">
-        <FavoriteIcon fontsize="large" />
+        <FavoriteIcon fontSize="large" />
       </IconButton>
       </Link>
       <IconButton className="swipeButtons_right">
-        <ThumbUpIcon fontsize="large" />
+        <ThumbUpIcon fontSize="large" />
       </IconButton>
       <div className="reactions">
       </div>
