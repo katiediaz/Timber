@@ -5,11 +5,19 @@ import Hike from "./Hike";
 import "./HikeViewer.css";
 import SwipeButtons from "./SwipeButtons";
 // import firebase from 'firebase/app';
-import database  from "./Firestore";
+import database from "./Firestore";
 // import { collection, query, where, getDocs } from "firebase/firestore"
 
 function HikeViewer(props) {
-// async function HikeViewer(props) {
+  let userId = localStorage.getItem("userId");
+  console.log("user id = " + userId);
+  if (!userId) {
+    userId = crypto.randomUUID();
+    // this creates a random user id in string format 
+    localStorage.setItem("userId", userId);
+  }
+
+  // async function HikeViewer(props) {
   const [Hikes, setHikes] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(database.length - 1);
   const [lastDirection, setLastDirection] = useState();
@@ -24,13 +32,10 @@ function HikeViewer(props) {
   // ##### END CURRENT WAVE ADDING FAVORITES FILE FROM FIRESTORE #####
 
   useEffect(() => {
-    database
-      .collection("Hikes")
-      .onSnapshot((snapshot) =>
-        setHikes(snapshot.docs.map((doc) => doc.data()))
-        // (doc) => { doc.collection(“Favorites”).onSnapshot(….) ...}
-      );
-      console.log()
+    database.collection("Hikes").onSnapshot(
+      (snapshot) => setHikes(snapshot.docs.map((doc) => Object.assign(doc.data(), {id: doc.id})))) 
+      // (doc) => { doc.collection(“Favorites”).onSnapshot(….) ...}
+    
     // blank  brackets will only run once
   }, []);
 
@@ -46,7 +51,9 @@ function HikeViewer(props) {
     console.log(name + " left the screen in direction.." + dir);
   };
 
-    return (
+  console.log(Hikes);
+
+  return (
     <div className="cardContainer">
       {Hikes.map((Hikes) => (
         <TinderCard
@@ -69,10 +76,10 @@ function HikeViewer(props) {
         <button onClick={() => goBack()}>Undo swipe!</button>
         <button onClick={() => swipe('right')}>Swipe right!</button>
       </div> */}
-      
+
       <SwipeButtons />
-     </div>
+    </div>
   );
-      }
+}
 
 export default HikeViewer;
