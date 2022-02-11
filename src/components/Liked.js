@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import "./Liked.css";
 // import PhotoIcon from "@mui/icons-material/Photo";
 import database from "./Firestore";
-import { collection, query, where, getDoc, doc } from "firebase/firestore";
 import Favorite from "@mui/icons-material/Favorite";
 
 function Liked() {
@@ -47,22 +46,6 @@ function Liked() {
   console.log(Hikes);
   console.log(Favorites);
 
-  // let favoritesData = [Favorites];
-  // for (let Hikes of favoritesData) {
-  //   if (Favorites.id === Hikes.id) {
-  //     Favorites = Hikes;
-  //   }
-  // }
-  // const favoriteHikes = hikes.filter(...)
-  // favorite.has(Hikes.id)
-  // documentData.favorites
-
-  // const likes = new Set()
-  // const favoriteHikes = Hikes.filter()
-
-  // const favoritesSet = new Set(favorites);
-
-  // Hikes.filter((h) => favoritesSet.has(h.id));
   const favoritesSet = new Set(Favorites)
 
   const favoriteHikes = Hikes.filter(h => favoritesSet.has(h.id)) 
@@ -76,17 +59,10 @@ function Liked() {
     </div>
   ));
 
-  // filter all the hikes to favorite hikes
-  // iterate through hikes and look to see does this id exist in my favorites list
-  // once i have favorite hikes i can render on screne
-  // next steps: swipe right create a new doc if they do have one append to existing favorites
-  // use get() on doc and modify locally the put back the new version using set()
 
   return (
     <div className="liked">
-      {/* <PhotoIcon className="hike_image" src={url}></PhotoIcon> */}
       <div className="hike_details">
-        {/* {Hikes.map((Liked) => () */}
         {likedHikes}
       </div>
     </div>

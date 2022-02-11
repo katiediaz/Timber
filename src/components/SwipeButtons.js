@@ -19,6 +19,7 @@ function SwipeButtons(props) {
       </IconButton>
       <IconButton className="swipeButtons_right">
         <ThumbUpIcon fontSize="large" />
+        {/* onClick={() => swiped('right')} */}
       </IconButton>
 
       <section className="saved">

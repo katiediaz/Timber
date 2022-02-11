@@ -4,9 +4,7 @@ import { Swipe } from "@mui/icons-material";
 import Hike from "./Hike";
 import "./HikeViewer.css";
 import SwipeButtons from "./SwipeButtons";
-// import firebase from 'firebase/app';
 import database from "./Firestore";
-// import { collection, query, where, getDocs } from "firebase/firestore"
 
 function HikeViewer(props) {
   let userId = localStorage.getItem("userId");
@@ -17,25 +15,14 @@ function HikeViewer(props) {
     localStorage.setItem("userId", userId);
   }
 
-  // async function HikeViewer(props) {
   const [Hikes, setHikes] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(database.length - 1);
   const [lastDirection, setLastDirection] = useState();
-  // ##### CURRENT WAVE ADDING FAVORITES FILE FROM FIRESTORE #####
-  // const favoritesRef = collection(database, "Hikes");
-  // const q = query(favoritesRef, where('Favorites', 'in', [['Favorites']]));
-  // const querySnapshot = await getDocs(q);
-  // querySnapshot.forEach((doc) => {
-  //   console.log(doc.id, " => ", doc.data());
-  // }
-  // );
-  // ##### END CURRENT WAVE ADDING FAVORITES FILE FROM FIRESTORE #####
+
 
   useEffect(() => {
     database.collection("Hikes").onSnapshot(
-      (snapshot) => setHikes(snapshot.docs.map((doc) => Object.assign(doc.data(), {id: doc.id})))) 
-      // (doc) => { doc.collection(“Favorites”).onSnapshot(….) ...}
-    
+      (snapshot) => setHikes(snapshot.docs.map((doc) => Object.assign(doc.data(), {id: doc.id}))))     
     // blank  brackets will only run once
   }, []);
 
@@ -52,6 +39,23 @@ function HikeViewer(props) {
   };
 
   console.log(Hikes);
+
+  // const canGoBack = currentIndex < database.length - 1
+
+  // const canSwipe = currentIndex >= 0
+  // const swipe = async (dir) => {
+  //   if (canSwipe && currentIndex < database.length) {
+  //     await childRefs[currentIndex].current.swipe(dir) // Swipe the card!
+  //   }
+  // }
+
+  // // increase current index and show card
+  // const goBack = async () => {
+  //   if (!canGoBack) return
+  //   const newIndex = currentIndex + 1
+  //   updateCurrentIndex(newIndex)
+  //   await childRefs[newIndex].current.restoreCard()
+  // }
 
   return (
     <div className="cardContainer">
@@ -72,13 +76,12 @@ function HikeViewer(props) {
         </TinderCard>
       ))}
       {/* <div className='buttons'>
-        <button onClick={() => swipe('left')}>Swipe left!</button>
-        <button onClick={() => goBack()}>Undo swipe!</button>
-        <button onClick={() => swipe('right')}>Swipe right!</button>
-      </div> */}
-
-      <SwipeButtons />
-    </div>
+        <button onClick={() => swiped('left')}>Swipe left!</button>
+        {/* <button onClick={() => goBack()}>Undo swipe!</button> */}
+        {/* <button onClick={() => swiped('right')}>Swipe right!</button>
+      </div> */} 
+  <SwipeButtons />
+     </div>
   );
 }
 
