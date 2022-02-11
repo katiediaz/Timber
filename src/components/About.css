@@ -1,5 +1,7 @@
 .aboutContainer{
+    margin: 3rem;
     display: flex;
+    flex-direction: row;
     justify-content: center;
     /* border-bottom: 1px solid rgb(11, 23, 11); */
     background-color: #e0e6e0;
@@ -8,6 +10,11 @@
 }
 
 .title{
+    margin: 3rem;
+    display: inline-block;
+    border: 2px solid black;
+    box-shadow: -15px 7px 1px black;
+    padding: 10px;
     font-size: 60px;
     font-weight: 100;
     margin-top: 24px;
@@ -15,6 +22,8 @@
 }
 
 .text{
+    justify-self: bottom;
+    margin: 3rem;
     font-size: 20px;
     font-weight: 100;
     margin-top: 24px;

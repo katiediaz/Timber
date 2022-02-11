@@ -17,16 +17,18 @@ function SwipeButtons(props) {
       <IconButton className="swipeButtons_repeat"> 
         <ReplayIcon fontSize="large" />
       </IconButton>
-     <Link to="liked" >
+      <IconButton className="swipeButtons_right">
+        <ThumbUpIcon fontSize="large" />
+      </IconButton>
+
+      <section className="saved">
+      <Link to="liked" >
       <IconButton className="swipeButtons_saved">
         <FavoriteIcon fontSize="large" />
       </IconButton>
       </Link>
-      <IconButton className="swipeButtons_right">
-        <ThumbUpIcon fontSize="large" />
-      </IconButton>
-      <div className="reactions">
-      </div>
+      </section>
+
     </div>
   );
 }
