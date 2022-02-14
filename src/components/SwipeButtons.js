@@ -2,6 +2,7 @@ import React, { useState, useMemo, useRef } from "react";
 import "./SwipeButtons.css";
 import TinderCard from 'react-tinder-card'
 import database from "./Firestore";
+import HikeViewer from "./HikeViewer";
 
 import CloseIcon from "@mui/icons-material/Close";
 import FavoriteIcon from "@mui/icons-material/Favorite";
@@ -9,10 +10,10 @@ import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import { IconButton } from "@mui/material";
 import {Link} from "react-router-dom";
 
-function SwipeButtons({dir}) {
+function SwipeButtons(props) {
   // const [lastDirection, setLastDirection] = useState();
 
-  const swiped = (dir) => {
+  const swiped = props => {
   };
 
   console.log(swiped)

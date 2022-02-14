@@ -35,10 +35,9 @@ function HikeViewer(props) {
     if (dir === "right") console.log("accepted");
     if (dir === "left") console.log("declined");
     // add stored favorite
-    console.log(name + " left the screen in direction.." + dir);
+    console.log(name + " left the screen on the " + dir);
   };
 
-  console.log(Hikes);
 
   return (
     <div className="cardContainer">
