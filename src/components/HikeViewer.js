@@ -16,7 +16,7 @@ function HikeViewer(props) {
   }
 
   const [Hikes, setHikes] = useState([]);
-  const [currentIndex, setCurrentIndex] = useState(database.length - 1);
+  // const [currentIndex, setCurrentIndex] = useState(database.length - 1);
   const [lastDirection, setLastDirection] = useState();
 
 
@@ -40,23 +40,6 @@ function HikeViewer(props) {
 
   console.log(Hikes);
 
-  // const canGoBack = currentIndex < database.length - 1
-
-  // const canSwipe = currentIndex >= 0
-  // const swipe = async (dir) => {
-  //   if (canSwipe && currentIndex < database.length) {
-  //     await childRefs[currentIndex].current.swipe(dir) // Swipe the card!
-  //   }
-  // }
-
-  // // increase current index and show card
-  // const goBack = async () => {
-  //   if (!canGoBack) return
-  //   const newIndex = currentIndex + 1
-  //   updateCurrentIndex(newIndex)
-  //   await childRefs[newIndex].current.restoreCard()
-  // }
-
   return (
     <div className="cardContainer">
       {Hikes.map((Hikes) => (
@@ -75,12 +58,10 @@ function HikeViewer(props) {
           </div>
         </TinderCard>
       ))}
-      {/* <div className='buttons'>
-        <button onClick={() => swiped('left')}>Swipe left!</button>
-        {/* <button onClick={() => goBack()}>Undo swipe!</button> */}
-        {/* <button onClick={() => swiped('right')}>Swipe right!</button>
-      </div> */} 
-  <SwipeButtons />
+       
+  <SwipeButtons 
+  onClick={(dir) => swiped(dir, Hikes.name)}
+  />
      </div>
   );
 }

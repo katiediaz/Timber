@@ -50,12 +50,15 @@ function Liked() {
 
   const favoriteHikes = Hikes.filter(h => favoritesSet.has(h.id)) 
   let likedHikes = favoriteHikes.map((Hikes) => (
-    <div
-      key={Hikes.name}
+    <div className="Fav_container"
+      // key={Hikes.name}
       style={{ backgroundImage: "url(" + Hikes.url + ")" }}
-      className="card"
+      className="Fav_card"
     >
-      <h3>{Hikes.name}</h3>
+      <div className="Fav_title"> 
+        <h2>{Hikes.name}</h2>
+      <p>Hike coordinates go here</p>
+      </div>
     </div>
   ));
 
@@ -64,6 +67,7 @@ function Liked() {
     <div className="liked">
       <div className="hike_details">
         {likedHikes}
+        {Hikes.url}
       </div>
     </div>
   );
