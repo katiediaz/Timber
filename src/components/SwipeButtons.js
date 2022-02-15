@@ -1,8 +1,5 @@
-import React, { useState, useMemo, useRef } from "react";
+import React from "react";
 import "./SwipeButtons.css";
-import TinderCard from 'react-tinder-card'
-import database from "./Firestore";
-import HikeViewer from "./HikeViewer";
 
 import CloseIcon from "@mui/icons-material/Close";
 import FavoriteIcon from "@mui/icons-material/Favorite";
@@ -11,23 +8,15 @@ import { IconButton } from "@mui/material";
 import {Link} from "react-router-dom";
 
 function SwipeButtons(props) {
-  // const [lastDirection, setLastDirection] = useState();
 
-  const swiped = props => {
-  };
-
-  console.log(swiped)
-
-
-  
   return (
     
     <div className="swipeButtons" >
-      <IconButton className="swipeButtons_left" onClick={(dir) => swiped(dir)}> 
+      <IconButton className="swipeButtons_left" onClick={() => props.onClick("left")}> 
         <CloseIcon fontSize="large"/> 
       </IconButton>  
 
-      <IconButton className="swipeButtons_right" onClick={(dir) => swiped(dir)}>
+      <IconButton className="swipeButtons_right" onClick={() => props.onClick("right")}>
         <ThumbUpIcon fontSize="large" />
       </IconButton>
 

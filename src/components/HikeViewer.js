@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useRef, useMemo, useEffect, useState } from "react";
 import TinderCard from "react-tinder-card";
 import { Swipe } from "@mui/icons-material";
 import Hike from "./Hike";
@@ -8,10 +8,10 @@ import database from "./Firestore";
 
 function HikeViewer(props) {
   let userId = localStorage.getItem("userId");
-  console.log("user id = " + userId);
+  // console.log("user id = " + userId);
   if (!userId) {
     userId = crypto.randomUUID();
-    // this creates a random user id in string format 
+    // this creates a random user id in string format
     localStorage.setItem("userId", userId);
   }
 
@@ -19,16 +19,37 @@ function HikeViewer(props) {
   // const [currentIndex, setCurrentIndex] = useState(database.length - 1);
   const [lastDirection, setLastDirection] = useState();
 
+  const [currentIndex, setCurrentIndex] = useState(6);
+  // used for outOfFrame closure
+  const currentIndexRef = useRef(currentIndex);
+
+  const childRefs = useMemo(
+    () =>
+      Array(7)
+        .fill(0)
+        .map((i) => React.createRef()),
+    []
+  );
 
   useEffect(() => {
-    database.collection("Hikes").onSnapshot(
-      (snapshot) => setHikes(snapshot.docs.map((doc) => Object.assign(doc.data(), {id: doc.id}))))     
+    database
+      .collection("Hikes")
+      .onSnapshot((snapshot) =>
+        setHikes(
+          snapshot.docs.map((doc) => Object.assign(doc.data(), { id: doc.id }))
+        )
+      );
     // blank  brackets will only run once
   }, []);
 
+  const updateCurrentIndex = (val) => {
+    setCurrentIndex(val)
+    currentIndexRef.current = val
+  }
+ 
   const swiped = (direction, nameToDelete, index) => {
     setLastDirection(direction);
-    // updateCurrentIndex(index - 1)
+    updateCurrentIndex(index - 1)
   };
 
   const outOfFrame = (name, dir) => {
@@ -38,16 +59,22 @@ function HikeViewer(props) {
     console.log(name + " left the screen on the " + dir);
   };
 
+  const swipe = async (dir) => {
+    console.log(currentIndex)
+      await childRefs[currentIndex].current.swipe(dir) // Swipe the card!
+  
+  };
 
   return (
     <div className="cardContainer">
-      {Hikes.map((Hikes) => (
+      {Hikes.map((Hikes, index) => (
         <TinderCard
+          ref={childRefs[index]}
           className="swipe"
           key={Hikes.name}
-          onSwipe={(dir) => swiped(dir, Hikes.name)}
+          onSwipe={(dir) => swiped(dir, Hikes.name, index)}
           preventSwipe={["up", "down"]}
-          onCardLeftScreen={(dir) => outOfFrame(Hikes.name, dir)}
+          onCardLeftScreen={(dir) => outOfFrame(Hikes.name, index)}
         >
           <div
             style={{ backgroundImage: "url(" + Hikes.url + ")" }}
@@ -57,11 +84,14 @@ function HikeViewer(props) {
           </div>
         </TinderCard>
       ))}
-       
-  <SwipeButtons 
-  onClick={(dir) => swiped(dir, Hikes.name)}
-  />
-     </div>
+
+      <SwipeButtons
+        onClick={(dir) =>
+          swipe(dir)
+        }
+        // onClick={(dir) => swiped(Hikes && Hikes.length > 0 && Hikes[0].name, dir)}
+      />
+    </div>
   );
 }
 

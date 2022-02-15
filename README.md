@@ -5,8 +5,11 @@ Timber allows users to swipe through photos  of hikes and "swipe right" on hikes
 # Installation:
 
 Clone this repository.
+
 Install Icons: https://mui.com/components/material-icons/?query=close
+
 Add multiple pages to React app: https://v5.reactrouter.com/web/guides/quick-start
+
 Add a Swipe feature: https://www.npmjs.com/package/react-tinder-card
 
 # Getting Started with Create React App -->
