@@ -8,7 +8,6 @@ import database, { doc, setDoc } from "./Firestore";
 
 function HikeViewer(props) {
   let userId = localStorage.getItem("userId");
-  // console.log("user id = " + userId);
   if (!userId) {
     userId = crypto.randomUUID();
     // this creates a random user id in string format
@@ -16,7 +15,6 @@ function HikeViewer(props) {
   }
 
   const [Hikes, setHikes] = useState([]);
-  // const [currentIndex, setCurrentIndex] = useState(database.length - 1);
   const [lastDirection, setLastDirection] = useState();
 
   const [currentIndex, setCurrentIndex] = useState(-1);
@@ -43,7 +41,6 @@ function HikeViewer(props) {
     let myFavs = [];
     // get user doc
     let docRef = database.collection("Users").doc(userId);
-    // second user: NBdDrVNBZjw2BANaDl8p
     // may need to hard code in userId: 301c74aa-df74-46ed-912e-7e1c78de8291
     docRef
       .get()
@@ -73,16 +70,6 @@ function HikeViewer(props) {
         console.log("Error getting document:", error);
       });
 
-    //   myFavs.push(hikeId)
-    //   database.collection("Users").doc(userId).set({
-    //     favorites : myFavs
-    // })
-    // .then(() => {
-    //     console.log("Document successfully written!");
-    // })
-    // .catch((error) => {
-    //     console.error("Error writing document: ", error);
-    // });
   };
   const updateCurrentIndex = (val) => {
     setCurrentIndex(val);
@@ -97,13 +84,12 @@ function HikeViewer(props) {
   const outOfFrame = (hikeId, dir) => {
     if (dir === "right") addToFavs(hikeId);
     if (dir === "left") console.log("declined");
-    // add stored favorite
-    // console.log(name + " left the screen on the " + dir);
+    
   };
 
   const swipe = async (dir) => {
     console.log(currentIndex);
-    await childRefs[currentIndex].current.swipe(dir); // Swipe the card!
+    await childRefs[currentIndex].current.swipe(dir); // Buttons will swipe the card!
   };
 
   return (
@@ -128,7 +114,6 @@ function HikeViewer(props) {
 
       <SwipeButtons
         onClick={(dir) => swipe(dir)}
-        // onClick={(dir) => swiped(Hikes && Hikes.length > 0 && Hikes[0].name, dir)}
       />
     </div>
   );
