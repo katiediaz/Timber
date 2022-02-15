@@ -1,4 +1,15 @@
-# Getting Started with Create React App
+# Introduction
+
+Timber allows users to swipe through photos  of hikes and "swipe right" on hikes that they are interested in. Once they've found the hikes that they like they will be able to look-up the hike on WA Trails Associated to find out all the necessary information. The user can then decide to meet the hike or keep swiping.
+
+# Installation:
+
+Clone this repository.
+Install Icons: https://mui.com/components/material-icons/?query=close
+Add multiple pages to React app: https://v5.reactrouter.com/web/guides/quick-start
+Add a Swipe feature: https://www.npmjs.com/package/react-tinder-card
+
+# Getting Started with Create React App -->
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
