@@ -18,7 +18,7 @@ function Liked() {
 
     let docRef = database
       .collection("Users")
-      .doc("301c74aa-df74-46ed-912e-7e1c78de8291");
+      .doc(userId);
       // second user: NBdDrVNBZjw2BANaDl8p
     // may need to hard code in userId: 301c74aa-df74-46ed-912e-7e1c78de8291
     docRef
